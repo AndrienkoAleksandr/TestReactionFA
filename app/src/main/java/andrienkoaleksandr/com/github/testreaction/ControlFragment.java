@@ -25,7 +25,9 @@ public class ControlFragment extends Fragment {
 
     private static List<SmartButton> buttons;
 
-    private Button startButton;
+    public Button startButton;
+
+    public ControlFragment controlFragmentLink = this;
 
     private OnFragmentInteractionListener mListener;
 
@@ -102,8 +104,12 @@ public class ControlFragment extends Fragment {
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                GameThread gameThread = new GameThread(buttons);
-                gameThread.start();
+                GameThread gameThread = new GameThread(buttons, controlFragmentLink);
+//                if (startButton.getText().equals("Stop")) {
+//                    gameThread.cancel();
+//                } else {
+                    gameThread.start();
+//                }
             }
         });
     }

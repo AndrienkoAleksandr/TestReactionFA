@@ -1,13 +1,9 @@
 package andrienkoaleksandr.com.github.testreaction;
 
 import android.content.Context;
-import android.graphics.Color;
-import android.graphics.PorterDuff;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-
-import static andrienkoaleksandr.com.github.testreaction.R.color.*;
 
 /**
  * Created by Andrienko Alexander on 17.10.2014.
@@ -19,7 +15,7 @@ public class SmartButton extends Button {
 
     private boolean isClicked;
 
-    private Button button ;
+    private static Button button ;
 
     public SmartButton(Context context, Button button) {
         super(context);
@@ -31,21 +27,12 @@ public class SmartButton extends Button {
         return isChecked;
     }
 
-//    public void setChecked(boolean isChecked) {
-//        this.isChecked = isChecked;
-//        if (isChecked) {
-//            setRedColor();
-//        } else {
-//            setCornLinkColor();
-//        }
-//    }
-
     public void setRedColor() {
         button.setBackgroundColor(getResources().getColor(R.color.RED_BUTTON));
     }
 
-    public void setCornLinkColor() {
-        button.setBackgroundColor(getResources().getColor(R.color.CORNSILK_BUTTON));
+    public void setGreyColor() {
+        button.setBackgroundColor(getResources().getColor(R.color.GREY));
     }
 
     private void initClickHandler() {
@@ -63,5 +50,4 @@ public class SmartButton extends Button {
     public void setClicked(boolean isClicked) {
         this.isClicked = isClicked;
     }
-
 }

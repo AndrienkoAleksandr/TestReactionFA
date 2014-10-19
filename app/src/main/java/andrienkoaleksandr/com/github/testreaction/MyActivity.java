@@ -5,6 +5,7 @@ import android.app.ActionBar;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -31,7 +32,6 @@ public class MyActivity extends Activity {
 
         //get all buttons
         buttons = new ArrayList<SmartButton>();
-
         buttons.add(new SmartButton(this, (Button)findViewById(R.id.button1)));
         buttons.add(new SmartButton(this, (Button)findViewById(R.id.button2)));
         buttons.add(new SmartButton(this, (Button)findViewById(R.id.button3)));
