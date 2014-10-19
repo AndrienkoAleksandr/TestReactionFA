@@ -11,23 +11,44 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.os.Build;
+import android.widget.Button;
 import android.widget.TableRow;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class MyActivity extends Activity {
-    TableRow controlRow;
+    private TableRow controlRow;
+
+    private List<SmartButton> buttons;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my);
         controlRow = (TableRow) findViewById(R.id.control_row);
+
+        //get all buttons
+        buttons = new ArrayList<SmartButton>();
+
+        buttons.add(new SmartButton(this, (Button)findViewById(R.id.button1)));
+        buttons.add(new SmartButton(this, (Button)findViewById(R.id.button2)));
+        buttons.add(new SmartButton(this, (Button)findViewById(R.id.button3)));
+        buttons.add(new SmartButton(this, (Button)findViewById(R.id.button4)));
+        buttons.add(new SmartButton(this, (Button)findViewById(R.id.button5)));
+        buttons.add(new SmartButton(this, (Button)findViewById(R.id.button6)));
+        buttons.add(new SmartButton(this, (Button)findViewById(R.id.button7)));
+        buttons.add(new SmartButton(this, (Button)findViewById(R.id.button8)));
+        buttons.add(new SmartButton(this, (Button)findViewById(R.id.button9)));
+
         addControlFragment();
     }
 
     public void addControlFragment() {
         ControlFragment controlFragment = new ControlFragment();
+        ControlFragment.newInstance(buttons);
+        controlFragment.onDetach();
         FragmentManager fragmentManager = getFragmentManager();
         FragmentTransaction ft = fragmentManager.beginTransaction();
         ft.add(controlRow.getId(), controlFragment);
@@ -52,10 +73,6 @@ public class MyActivity extends Activity {
             return true;
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    public static void userClickedButton(boolean checked, boolean isClicked) {
-
     }
 
     /**

@@ -1,6 +1,9 @@
 package andrienkoaleksandr.com.github.testreaction;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -11,9 +14,6 @@ import static andrienkoaleksandr.com.github.testreaction.R.color.*;
  *
  */
 public class SmartButton extends Button {
-    public SmartButton(Context context) {
-        super(context);
-    }
 
     private boolean isChecked;
 
@@ -21,25 +21,31 @@ public class SmartButton extends Button {
 
     private Button button ;
 
+    public SmartButton(Context context, Button button) {
+        super(context);
+        this.button = button;
+        initClickHandler();
+    }
+
     public boolean isChecked() {
         return isChecked;
     }
 
-    public void setChecked(boolean isChecked) {
-        this.isChecked = isChecked;
-        if (isChecked) {
-            setRedColor();
-        } else {
-            setCornLinkColor();
-        }
+//    public void setChecked(boolean isChecked) {
+//        this.isChecked = isChecked;
+//        if (isChecked) {
+//            setRedColor();
+//        } else {
+//            setCornLinkColor();
+//        }
+//    }
+
+    public void setRedColor() {
+        button.setBackgroundColor(getResources().getColor(R.color.RED_BUTTON));
     }
 
-    private void setRedColor() {
-        button.setBackgroundColor(RED_BUTTON);
-    }
-
-    private void setCornLinkColor() {
-        button.setBackgroundColor(CORNSILK_BUTTON);
+    public void setCornLinkColor() {
+        button.setBackgroundColor(getResources().getColor(R.color.CORNSILK_BUTTON));
     }
 
     private void initClickHandler() {
@@ -48,7 +54,8 @@ public class SmartButton extends Button {
 
             @Override
             public void onClick(View v) {
-                MyActivity.userClickedButton(isChecked(), isClicked);
+                Log.v("Clicked!!!!", "!!!!!!");
+                GameThread.userClickedButton(isChecked(), isClicked);
             }
         });
     }
