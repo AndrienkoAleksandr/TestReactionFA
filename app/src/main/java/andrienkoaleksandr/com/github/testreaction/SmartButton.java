@@ -4,6 +4,8 @@ import android.content.Context;
 import android.view.View;
 import android.widget.Button;
 
+import static andrienkoaleksandr.com.github.testreaction.R.color.*;
+
 /**
  * Created by Andrienko Alexander on 17.10.2014.
  *
@@ -33,11 +35,11 @@ public class SmartButton extends Button {
     }
 
     private void setRedColor() {
-        button.setBackgroundColor(R.color.RED_BUTTON);
+        button.setBackgroundColor(RED_BUTTON);
     }
 
     private void setCornLinkColor() {
-        button.setBackgroundColor(R.color.CORNSILK_BUTTON);
+        button.setBackgroundColor(CORNSILK_BUTTON);
     }
 
     private void initClickHandler() {

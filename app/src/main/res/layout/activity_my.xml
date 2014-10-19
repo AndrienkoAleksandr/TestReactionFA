@@ -4,4 +4,45 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MyActivity"
-    tools:ignore="MergeRootFrame" />
+    tools:ignore="MergeRootFrame" >
+
+    <TableLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/main_table"
+        android:layout_gravity="center_horizontal|top"
+        tools:ignore="UselessParent">
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:id="@+id/title_row">
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/title"
+                android:id="@+id/title"
+                android:textIsSelectable="false"
+                android:textColor="@color/Black"
+                android:textSize="20sp"
+                android:layout_column="0" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:id="@+id/content_row">
+        <fragment android:name="andrienkoaleksandr.com.github.testreaction.ContentFragment"
+            tools:layout="@layout/fragment_content" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:id="@+id/control_row">
+        </TableRow>
+
+    </TableLayout>
+</FrameLayout>
