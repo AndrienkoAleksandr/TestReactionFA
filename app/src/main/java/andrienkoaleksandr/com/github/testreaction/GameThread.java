@@ -1,7 +1,6 @@
 package andrienkoaleksandr.com.github.testreaction;
 
 import android.app.Activity;
-import android.app.Fragment;
 import android.util.Log;
 
 import java.util.List;
@@ -15,17 +14,13 @@ import java.util.TimerTask;
  */
 public class GameThread extends Activity {
 
-    int i = 0;
-
-    private boolean isClicked;
-
     private static int randomNumber = -1;
 
     private static List<SmartButton> buttons;
 
     private String message;
 
-    private final int amountSwitch = 5;
+    private final int amountSwitch = 10;
 
     private int nextNumber = -1;
 
@@ -43,27 +38,32 @@ public class GameThread extends Activity {
 
     private Random random = new Random();
 
-    public GameThread(List<SmartButton> buttons, ControlFragment controlFragment) {
-        this.buttons = buttons;
+    public GameThread() {
+    }
+
+    public GameThread(ControlFragment controlFragment) {
         this.controlFragment = controlFragment;
+        buttons = MyActivity.buttons;
     }
 
     public void start() {
-        controlFragment.startButton.setText("Stop");
-//        controlFragment.setResult("Come on!!! Let's go!!! Quickly!");
+
+        controlFragment.getStartButton().setText("Stop");
+        controlFragment.getResultLabel().setText("Let's go!!! Quickly!");
 
         Timer myTimer = new Timer();
         timerTask = new TimerTask() {
+
             @Override
             public boolean cancel() {
-                message = "Your winning percentage " +
+                message = "Result " +
                         successTrying / amountSwitch * 100 + " %";
-//                                 reactionView.setResult(message);
+                controlFragment.getResultLabel().setText(message);
                 buttons.get(randomNumber).setGreyColor();
                 randomNumber = -1;
                 counter = 1;
                 successTrying = 0;
-                controlFragment.startButton.setText("Start!!!");
+                controlFragment.getStartButton().setText("Start!!!");
                 return super.cancel();
             }
 
@@ -72,24 +72,28 @@ public class GameThread extends Activity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        if (randomNumber != -1) {
-                            buttons.get(randomNumber).setGreyColor();
-                            buttons.get(randomNumber).setClicked(false);
-                        }
+                        if (controlFragment.getStartButton().getText().equals("Start!!!")) {
 
-                        randomNumber = getRandomNumber();
+                        } else {
+                            if (randomNumber != -1) {
+                                buttons.get(randomNumber).setChecked(false);
+                                buttons.get(randomNumber).setClicked(false);
+                            }
 
-                        buttons.get(randomNumber).setRedColor();
-                        counter++;
-                        Log.v("!!!!!!!!!!!!!!!!!", counter + " " + randomNumber);
-                        if (counter > amountSwitch + 1) {
-                            cancel();
+                            randomNumber = getRandomNumber();
+
+                            buttons.get(randomNumber).setChecked(true);
+
+                            counter++;
+                            if (counter > amountSwitch + 1) {
+                                cancel();
+                            }
                         }
                     }
                 });
             }
         };
-        myTimer.schedule(timerTask, 1000, 1000);
+        myTimer.schedule(timerTask, 600, 600);
     }
 
     private int getRandomNumber() {

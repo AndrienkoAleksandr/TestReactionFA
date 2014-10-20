@@ -8,8 +8,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import java.util.List;
+import java.util.concurrent.Callable;
 
 
 /**
@@ -23,21 +25,22 @@ import java.util.List;
  */
 public class ControlFragment extends Fragment {
 
-    private static List<SmartButton> buttons;
+    private Button startButton;
 
-    public Button startButton;
-
-    public ControlFragment controlFragmentLink = this;
+    private TextView resultLabel;
 
     private OnFragmentInteractionListener mListener;
+
+    private ControlFragment fragment = this;
+
+    private GameThread gameThread = new GameThread(fragment);
 
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      * @return A new instance of fragment ControlFragment.
      */
-    public static ControlFragment newInstance(List<SmartButton> buttons) {
-        ControlFragment.buttons = buttons;
+    public static ControlFragment newInstance() {
         ControlFragment fragment = new ControlFragment();
         Bundle args = new Bundle();
         fragment.setArguments(args);
@@ -100,17 +103,34 @@ public class ControlFragment extends Fragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         startButton = (Button)getView().findViewById(R.id.startButton);
+        resultLabel = (TextView)getView().findViewById(R.id.result_label);
 
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                GameThread gameThread = new GameThread(buttons, controlFragmentLink);
-//                if (startButton.getText().equals("Stop")) {
-//                    gameThread.cancel();
-//                } else {
+
+                if (startButton.getText().equals("Stop")) {
+                    gameThread.cancel();
+                } else {
                     gameThread.start();
-//                }
+                }
             }
         });
+    }
+
+    public Button getStartButton() {
+        return startButton;
+    }
+
+    public TextView getResultLabel() {
+        return resultLabel;
+    }
+
+    public void setStartButton(Button startButton) {
+        this.startButton = startButton;
+    }
+
+    public void setResultLabel(TextView resultLabel) {
+        this.resultLabel = resultLabel;
     }
 }

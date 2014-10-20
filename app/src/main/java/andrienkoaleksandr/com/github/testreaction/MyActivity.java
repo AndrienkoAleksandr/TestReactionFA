@@ -22,7 +22,7 @@ import java.util.List;
 public class MyActivity extends Activity {
     private TableRow controlRow;
 
-    private List<SmartButton> buttons;
+    public static List<SmartButton> buttons;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,13 +41,12 @@ public class MyActivity extends Activity {
         buttons.add(new SmartButton(this, (Button)findViewById(R.id.button7)));
         buttons.add(new SmartButton(this, (Button)findViewById(R.id.button8)));
         buttons.add(new SmartButton(this, (Button)findViewById(R.id.button9)));
-
         addControlFragment();
     }
 
     public void addControlFragment() {
         ControlFragment controlFragment = new ControlFragment();
-        ControlFragment.newInstance(buttons);
+        ControlFragment.newInstance();
         controlFragment.onDetach();
         FragmentManager fragmentManager = getFragmentManager();
         FragmentTransaction ft = fragmentManager.beginTransaction();

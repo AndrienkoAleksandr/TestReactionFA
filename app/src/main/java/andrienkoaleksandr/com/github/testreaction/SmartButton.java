@@ -15,7 +15,7 @@ public class SmartButton extends Button {
 
     private boolean isClicked;
 
-    private static Button button ;
+    private Button button ;
 
     public SmartButton(Context context, Button button) {
         super(context);
@@ -25,6 +25,15 @@ public class SmartButton extends Button {
 
     public boolean isChecked() {
         return isChecked;
+    }
+
+    public void setChecked(boolean isChecked) {
+        this.isChecked = isChecked;
+        if (isChecked) {
+            setRedColor();
+        } else {
+            setGreyColor();
+        }
     }
 
     public void setRedColor() {
