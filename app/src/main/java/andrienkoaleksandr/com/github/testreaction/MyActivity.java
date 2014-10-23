@@ -1,11 +1,9 @@
 package andrienkoaleksandr.com.github.testreaction;
 
 import android.app.Activity;
-import android.app.ActionBar;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -19,9 +17,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MyActivity extends Activity {
-    private TableRow controlRow;
+    private static TableRow controlRow;
 
     public static List<SmartButton> buttons;
+
+    private static ControlFragment controlFragment;
+
+    private FragmentManager fm = getFragmentManager();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,15 +46,21 @@ public class MyActivity extends Activity {
     }
 
     public void addControlFragment() {
-        ControlFragment controlFragment = new ControlFragment();
-        ControlFragment.newInstance();
-        controlFragment.onDetach();
-        FragmentManager fragmentManager = getFragmentManager();
-        FragmentTransaction ft = fragmentManager.beginTransaction();
-        ft.add(controlRow.getId(), controlFragment);
-        ft.commit();
+            controlFragment = new ControlFragment();
+            ControlFragment.newInstance();
+            controlFragment.onDetach();
+            FragmentTransaction ft = fm.beginTransaction();
+            ft.add(controlRow.getId(), controlFragment);
+            ft.commit();
     }
 
+    @Override
+    protected void onPause() {
+        FragmentTransaction ft = fm.beginTransaction();
+        ft.remove(controlFragment);
+        ft.commit();
+        super.onPause();
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
