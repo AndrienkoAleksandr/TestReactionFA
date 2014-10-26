@@ -1,12 +1,15 @@
 package andrienkoaleksandr.com.github.testreaction;
 
 import android.app.Activity;
-import android.util.Log;
 
 import java.util.List;
 import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
+
+import andrienkoaleksandr.com.github.testreaction.activity.actionbar.MyActivity;
+import andrienkoaleksandr.com.github.testreaction.fragment.ControlFragment;
+import andrienkoaleksandr.com.github.testreaction.view.SmartButton;
 
 /**
  * Created by Andrienko Alexander on 19.10.2014.
@@ -38,10 +41,15 @@ public class GameThread extends Activity {
 
     private Random random = new Random();
 
+    private static int speed;
+
     public GameThread() {
     }
 
     public GameThread(ControlFragment controlFragment) {
+        if (speed == 0) {
+            speed = Constant.NORMAL;
+        }
         this.controlFragment = controlFragment;
         buttons = MyActivity.buttons;
     }
@@ -93,7 +101,7 @@ public class GameThread extends Activity {
                 });
             }
         };
-        myTimer.schedule(timerTask, 600, 600);
+        myTimer.schedule(timerTask, speed, speed);
     }
 
     private int getRandomNumber() {
@@ -115,5 +123,9 @@ public class GameThread extends Activity {
 
     public void cancel() {
         timerTask.cancel();
+    }
+
+    public static void setSpeed(int speed) {
+        GameThread.speed = speed;
     }
 }

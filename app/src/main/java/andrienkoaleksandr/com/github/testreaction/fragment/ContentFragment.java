@@ -1,4 +1,4 @@
-package andrienkoaleksandr.com.github.testreaction;
+package andrienkoaleksandr.com.github.testreaction.fragment;
 
 import android.os.Bundle;
 import android.app.Fragment;
@@ -6,6 +6,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import andrienkoaleksandr.com.github.testreaction.R;
+
+/**
+ * Created by Andrienko Alexander on 26.10.2014.
+ *
+ */
 public class ContentFragment extends Fragment {
 
     @Override

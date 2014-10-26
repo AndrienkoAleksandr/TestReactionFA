@@ -1,9 +1,12 @@
-package andrienkoaleksandr.com.github.testreaction;
+package andrienkoaleksandr.com.github.testreaction.view;
 
 import android.content.Context;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+
+import andrienkoaleksandr.com.github.testreaction.GameThread;
+import andrienkoaleksandr.com.github.testreaction.R;
 
 /**
  * Created by Andrienko Alexander on 17.10.2014.

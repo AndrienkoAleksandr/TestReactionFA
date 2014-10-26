@@ -1,12 +1,14 @@
-package andrienkoaleksandr.com.github.testreaction;
+package andrienkoaleksandr.com.github.testreaction.activity.actionbar;
 
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +18,17 @@ import android.widget.TableRow;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MyActivity extends Activity {
+import andrienkoaleksandr.com.github.testreaction.Constant;
+import andrienkoaleksandr.com.github.testreaction.GameThread;
+import andrienkoaleksandr.com.github.testreaction.fragment.ControlFragment;
+import andrienkoaleksandr.com.github.testreaction.R;
+import andrienkoaleksandr.com.github.testreaction.view.SmartButton;
+
+/**
+ * Created by Andrienko Alexander on 26.10.2014.
+ *
+ */
+public class MyActivity extends ActionBarActivity {
     private static TableRow controlRow;
 
     public static List<SmartButton> buttons;
@@ -28,7 +40,9 @@ public class MyActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar();
         setContentView(R.layout.activity_my);
+
         controlRow = (TableRow) findViewById(R.id.control_row);
 
         //get all buttons
@@ -46,8 +60,7 @@ public class MyActivity extends Activity {
     }
 
     public void addControlFragment() {
-            controlFragment = new ControlFragment();
-            ControlFragment.newInstance();
+            controlFragment = ControlFragment.newInstance();
             controlFragment.onDetach();
             FragmentTransaction ft = fm.beginTransaction();
             ft.add(controlRow.getId(), controlFragment);
@@ -62,19 +75,32 @@ public class MyActivity extends Activity {
         super.onPause();
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.my, menu);
-        return true;
+    // Add ActionBar Menu with dropdown of game speed
+    public boolean onCreateOptionsMenu(Menu menu){
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.action_bar, menu);
+        return super.onCreateOptionsMenu(menu);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
+        // set speed of game
+        switch (item.getItemId()) {
+            case R.id.item0:
+                GameThread.setSpeed(Constant.SLOW);
+                return true;
+            case R.id.item1:
+                GameThread.setSpeed(Constant.NORMAL);
+                return true;
+            case R.id.item2:
+                GameThread.setSpeed(Constant.FAST);
+                return true;
+            case R.id.item3:
+                GameThread.setSpeed(Constant.NIGHTMARE);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
-        return super.onOptionsItemSelected(item);
     }
 
     //todo try to use this future
