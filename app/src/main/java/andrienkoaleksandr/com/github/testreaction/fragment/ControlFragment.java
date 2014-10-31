@@ -7,8 +7,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+
+import java.util.List;
+
 import andrienkoaleksandr.com.github.testreaction.GameThread;
 import andrienkoaleksandr.com.github.testreaction.R;
+import andrienkoaleksandr.com.github.testreaction.view.SmartButton;
 
 /**
  * Created by Andrienko Alexander on 26.10.2014.
@@ -30,6 +34,7 @@ public class ControlFragment extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
+
     public ControlFragment() {
     }
 

@@ -33,6 +33,7 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:id="@+id/content_row">
+
         <fragment android:name="andrienkoaleksandr.com.github.testreaction.fragment.ContentFragment"
             tools:layout="@layout/fragment_content" />
 
