@@ -9,7 +9,6 @@ import java.util.TimerTask;
 
 import andrienkoaleksandr.com.github.testreaction.activity.actionbar.MainActivity;
 import andrienkoaleksandr.com.github.testreaction.fragment.ContentFragment;
-import andrienkoaleksandr.com.github.testreaction.fragment.ControlFragment;
 import andrienkoaleksandr.com.github.testreaction.view.SmartButton;
 
 /**
@@ -38,7 +37,7 @@ public class GameThread extends Activity {
 
     private TimerTask timerTask;
 
-    private ControlFragment controlFragment;
+    private ContentFragment controlFragment;
 
     private Random random = new Random();
 
@@ -47,7 +46,7 @@ public class GameThread extends Activity {
     public GameThread() {
     }
 
-    public GameThread(ControlFragment controlFragment) {
+    public GameThread(ContentFragment controlFragment) {
         if (speed == 0) {
             speed = Constant.NORMAL;
         }

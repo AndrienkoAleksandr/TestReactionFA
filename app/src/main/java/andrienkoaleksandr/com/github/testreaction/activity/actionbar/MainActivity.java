@@ -1,39 +1,29 @@
 package andrienkoaleksandr.com.github.testreaction.activity.actionbar;
 
-import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ListView;
-import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import andrienkoaleksandr.com.github.testreaction.Constant;
 import andrienkoaleksandr.com.github.testreaction.GameThread;
-import andrienkoaleksandr.com.github.testreaction.fragment.ControlFragment;
 import andrienkoaleksandr.com.github.testreaction.R;
+import andrienkoaleksandr.com.github.testreaction.fragment.ContentFragment;
 import andrienkoaleksandr.com.github.testreaction.fragment.Settings;
-import andrienkoaleksandr.com.github.testreaction.view.SmartButton;
 
 /**
  * Created by Andrienko Alexander on 26.10.2014.
@@ -42,8 +32,6 @@ import andrienkoaleksandr.com.github.testreaction.view.SmartButton;
 public class MainActivity extends ActionBarActivity {
 
     private static TableRow controlRow;
-
-    private static ControlFragment controlFragment;
 
     private FragmentManager fm = getFragmentManager();
 
@@ -57,6 +45,7 @@ public class MainActivity extends ActionBarActivity {
 
     private static int AmountRow = 4;
     private static int amountElementsOfRow = 4;
+    private ContentFragment contentFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,7 +55,7 @@ public class MainActivity extends ActionBarActivity {
         getSupportActionBar().setHomeButtonEnabled(true);
         setContentView(R.layout.drawer_activity);
 
-        controlRow = (TableRow) findViewById(R.id.control_row);
+//        controlRow = (TableRow) findViewById(R.id.control_row);
 
 //        addControlFragment();
 
@@ -112,30 +101,30 @@ public class MainActivity extends ActionBarActivity {
     }
 
 
-    public void addControlFragment() {
-        if(findViewById(R.id.content_row) != null) {
-            controlFragment = ControlFragment.newInstance();
-            controlFragment.onDetach();
-            FragmentTransaction ft = fm.beginTransaction();
-            ft.add(controlRow.getId(), controlFragment);
-            ft.commit();
-        }
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        addControlFragment();
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        controlRow.getChildCount();
-        FragmentTransaction ft = fm.beginTransaction();
-        ft.remove(controlFragment);
-        ft.commit();
-    }
+//    public void addControlFragment() {
+//        if(findViewById(R.id.content_row) != null) {
+//            controlFragment = ControlFragment.newInstance();
+//            controlFragment.onDetach();
+//            FragmentTransaction ft = fm.beginTransaction();
+//            ft.add(controlRow.getId(), controlFragment);
+//            ft.commit();
+//        }
+//    }
+//
+//    @Override
+//    public void onResume() {
+//        super.onResume();
+//        addControlFragment();
+//    }
+//
+//    @Override
+//    protected void onPause() {
+//        super.onPause();
+//        controlRow.getChildCount();
+//        FragmentTransaction ft = fm.beginTransaction();
+//        ft.remove(controlFragment);
+//        ft.commit();
+//    }
 
     // Add ActionBar Menu with dropdown of game speed
     public boolean onCreateOptionsMenu(Menu menu){
@@ -189,16 +178,14 @@ public class MainActivity extends ActionBarActivity {
                 startActivity(intent);
                 break;
             case 1:
-                Toast.makeText(getApplicationContext(), "Test1", Toast.LENGTH_SHORT);
                 break;
             case 2:
                 //delete all content
                 clearActivity();
                 ft = fm.beginTransaction();
                 Fragment fm = Settings.newInstance("test", "test");
-                ft.replace(R.id.content_row, fm);
+//                ft.replace(R.id.content_row, fm);
                 ft.commit();
-                Toast.makeText(getApplicationContext(), "Test2", Toast.LENGTH_SHORT);
                 break;
 //                Intent intent = new Intent(this, ua.org.horishniy.geekhub.geekhubandroidhome01.appInterface.Activities.AnimationActivity.class);
 //                startActivity(intent);
@@ -214,9 +201,9 @@ public class MainActivity extends ActionBarActivity {
     }
 
     private void clearActivity() {
-        ((TableRow) findViewById(R.id.content_row)).removeAllViews();
-        ((TableRow) findViewById(R.id.title_row)).removeAllViews();
-        ((TableRow) findViewById(R.id.control_row)).removeAllViews();
+//        ((TableRow) findViewById(R.id.content_row)).removeAllViews();
+//        ((TableRow) findViewById(R.id.title_row)).removeAllViews();
+//        ((TableRow) findViewById(R.id.control_row)).removeAllViews();
     }
 
     @Override

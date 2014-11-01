@@ -1,96 +1,53 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="andrienkoaleksandr.com.github.testreaction.fragment.ContentFragment">
 
-    <TableLayout
-        android:id="@+id/table_content"
+    <TableRow
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="left|top">
+        android:layout_height="fill_parent"
+        android:id="@+id/title_row">
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/title"
+            android:id="@+id/title"
+            android:textIsSelectable="false"
+            android:textColor="@color/Black"
+            android:textSize="20sp"
+            android:layout_column="0" />
+    </TableRow>
 
-        <!--<TableRow-->
-            <!--android:layout_width="fill_parent"-->
-            <!--android:layout_height="fill_parent">-->
+       <TableLayout
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:id="@+id/content_table"/>
 
-            <!--<Button-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:text="@string/button_label"-->
-                <!--android:id="@+id/button1"-->
-                <!--android:background="@color/GREY" />-->
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/control_row">
 
-            <!--<Button-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:text="@string/button_label"-->
-                <!--android:id="@+id/button2"-->
-                <!--android:background="@color/GREY" />-->
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/start_button"
+            android:id="@+id/startButton"
+            android:layout_gravity="center_horizontal|top"
+            android:layout_column="0" />
 
-            <!--<Button-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:text="@string/button_label"-->
-                <!--android:id="@+id/button3"-->
-                <!--android:background="@color/GREY" />-->
 
-        <!--</TableRow>-->
+    </TableRow>
 
-        <!--<TableRow-->
-            <!--android:layout_width="fill_parent"-->
-            <!--android:layout_height="fill_parent"-->
-            <!--android:layout_column="0">-->
+    <TableRow>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/result_label"
+            android:layout_gravity="center_horizontal"
+            android:textSize="20sp"
+            android:layout_column="0"/>
+    </TableRow>
 
-            <!--<Button-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:text="@string/button_label"-->
-                <!--android:id="@+id/button4"-->
-                <!--android:background="@color/GREY" />-->
-
-            <!--<Button-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:text="@string/button_label"-->
-                <!--android:id="@+id/button5"-->
-                <!--android:background="@color/GREY" />-->
-
-            <!--<Button-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:text="@string/button_label"-->
-                <!--android:id="@+id/button6"-->
-                <!--android:background="@color/GREY" />-->
-        <!--</TableRow>-->
-
-        <!--<TableRow-->
-            <!--android:layout_width="fill_parent"-->
-            <!--android:layout_height="fill_parent">-->
-
-            <!--<Button-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:text="@string/button_label"-->
-                <!--android:id="@+id/button7"-->
-                <!--android:background="@color/GREY" />-->
-
-            <!--<Button-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:text="@string/button_label"-->
-                <!--android:id="@+id/button8"-->
-                <!--android:background="@color/GREY" />-->
-
-            <!--<Button-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:text="@string/button_label"-->
-                <!--android:id="@+id/button9"-->
-                <!--android:background="@color/GREY"-->
-
-                <!--android:singleLine="false" />-->
-        <!--</TableRow>-->
-
-    </TableLayout>
-</FrameLayout>
+</TableLayout>

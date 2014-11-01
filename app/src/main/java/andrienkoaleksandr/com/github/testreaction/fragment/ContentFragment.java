@@ -1,17 +1,19 @@
 package andrienkoaleksandr.com.github.testreaction.fragment;
 
-import android.os.Bundle;
 import android.app.Fragment;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import andrienkoaleksandr.com.github.testreaction.GameThread;
 import andrienkoaleksandr.com.github.testreaction.R;
 import andrienkoaleksandr.com.github.testreaction.activity.actionbar.MainActivity;
 import andrienkoaleksandr.com.github.testreaction.view.SmartButton;
@@ -21,6 +23,12 @@ import andrienkoaleksandr.com.github.testreaction.view.SmartButton;
  *
  */
 public class ContentFragment extends Fragment {
+
+    private Button startButton;
+
+    private TextView resultLabel;
+
+    private GameThread gameThread;
 
     private static List<SmartButton> smartButtons;
 
@@ -38,9 +46,9 @@ public class ContentFragment extends Fragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        //get all buttons
+//        get all buttons
         smartButtons = new ArrayList<SmartButton>();
-        TableLayout tableLayout = (TableLayout)getView().findViewById(R.id.table_content);
+        TableLayout tableLayout = (TableLayout)getView().findViewById(R.id.content_table);
         TableRow tableRow;
         Button button;
         for(int i = 0; i < MainActivity.getAmountRow(); i++) {
@@ -54,10 +62,32 @@ public class ContentFragment extends Fragment {
                 smartButtons.add(new SmartButton(getActivity(), button));
             }
         }
+        gameThread = new GameThread(this);
+        startButton = (Button)getView().findViewById(R.id.startButton);
+        resultLabel = (TextView)getView().findViewById(R.id.result_label);
 
+        startButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (startButton.getText().equals("Stop")) {
+                    gameThread.cancel();
+                } else {
+                    gameThread.start();
+                }
+            }
+        });
     }
 
     public static List<SmartButton> getSmartButtons() {
         return smartButtons;
+    }
+
+    public Button getStartButton() {
+        return startButton;
+    }
+
+    public TextView getResultLabel() {
+        return resultLabel;
     }
 }
