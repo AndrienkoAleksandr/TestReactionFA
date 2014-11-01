@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import andrienkoaleksandr.com.github.testreaction.R;
-import andrienkoaleksandr.com.github.testreaction.activity.actionbar.MyActivity;
+import andrienkoaleksandr.com.github.testreaction.activity.actionbar.MainActivity;
 import andrienkoaleksandr.com.github.testreaction.view.SmartButton;
 
 /**
@@ -43,10 +43,10 @@ public class ContentFragment extends Fragment {
         TableLayout tableLayout = (TableLayout)getView().findViewById(R.id.table_content);
         TableRow tableRow;
         Button button;
-        for(int i = 0; i < MyActivity.getAmountRow(); i++) {
+        for(int i = 0; i < MainActivity.getAmountRow(); i++) {
             tableRow = new TableRow(getActivity());
             tableLayout.addView(tableRow);
-            for(int j = 0; j < MyActivity.getAmountElementsOfRow(); j++) {
+            for(int j = 0; j < MainActivity.getAmountElementsOfRow(); j++) {
                 button = new Button(getActivity());
                 button.setText("T");
                 button.setBackgroundColor(getResources().getColor(R.color.GREY));
@@ -54,6 +54,7 @@ public class ContentFragment extends Fragment {
                 smartButtons.add(new SmartButton(getActivity(), button));
             }
         }
+
     }
 
     public static List<SmartButton> getSmartButtons() {

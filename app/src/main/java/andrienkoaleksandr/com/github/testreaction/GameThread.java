@@ -4,11 +4,10 @@ import android.app.Activity;
 
 import java.util.List;
 import java.util.Random;
-import java.util.Scanner;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import andrienkoaleksandr.com.github.testreaction.activity.actionbar.MyActivity;
+import andrienkoaleksandr.com.github.testreaction.activity.actionbar.MainActivity;
 import andrienkoaleksandr.com.github.testreaction.fragment.ContentFragment;
 import andrienkoaleksandr.com.github.testreaction.fragment.ControlFragment;
 import andrienkoaleksandr.com.github.testreaction.view.SmartButton;
@@ -29,9 +28,9 @@ public class GameThread extends Activity {
 
     private int nextNumber = -1;
 
-    private final int amountColumn = MyActivity.getAmountElementsOfRow();
+    private final int amountColumn = MainActivity.getAmountElementsOfRow();
 
-    private final int amountRow = MyActivity.getAmountRow();
+    private final int amountRow = MainActivity.getAmountRow();
 
     private static float successTrying;
 

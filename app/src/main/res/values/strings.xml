@@ -12,11 +12,16 @@
     <string name="speed1">Normal: 1000</string>
     <string name="speed2">Fast: 600 </string>
     <string name="speed3">Nightmare: 300</string>
+
     <string-array name="screen_array">
         <item>Screen 1</item>
         <item>Screen 2</item>
         <item>Screen 3</item>
     </string-array>
+
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>
-    </resources>
+    <string name="title_activity_second_">SecondActivity</string>
+    <string name="title_activity_second">SecondActivity</string>
+
+</resources>
