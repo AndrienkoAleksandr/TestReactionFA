@@ -62,7 +62,6 @@ public class GameThread extends Activity {
 
         controlFragment.getStartButton().setText("Stop");
         controlFragment.getResultLabel().setText("Let's go!!! Quickly!");
-
         Timer myTimer = new Timer();
         timerTask = new TimerTask() {
 
@@ -71,6 +70,7 @@ public class GameThread extends Activity {
                 message = "Result " +
                         successTrying / amountSwitch * 100 + " %";
                 controlFragment.getResultLabel().setText(message);
+                StatisticsStorage.addNewResult(message);
                 buttons.get(randomNumber).setGreyColor();
                 randomNumber = -1;
                 counter = 1;
@@ -85,7 +85,6 @@ public class GameThread extends Activity {
                     @Override
                     public void run() {
                         if (controlFragment.getStartButton().getText().equals("Start!!!")) {
-
                         } else {
                             if (randomNumber != -1) {
                                 buttons.get(randomNumber).setChecked(false);

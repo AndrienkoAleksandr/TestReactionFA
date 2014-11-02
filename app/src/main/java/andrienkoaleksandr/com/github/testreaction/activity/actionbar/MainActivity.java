@@ -20,6 +20,7 @@ import android.widget.ListView;
 
 import andrienkoaleksandr.com.github.testreaction.Constant;
 import andrienkoaleksandr.com.github.testreaction.GameThread;
+import andrienkoaleksandr.com.github.testreaction.MultiActivity;
 import andrienkoaleksandr.com.github.testreaction.R;
 import andrienkoaleksandr.com.github.testreaction.fragment.ContentFragment;
 import andrienkoaleksandr.com.github.testreaction.fragment.Options;
@@ -48,14 +49,10 @@ public class MainActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        getSupportActionBar();
+
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
         setContentView(R.layout.drawer_activity);
-
-//        controlRow = (TableRow) findViewById(R.id.control_row);
-
-//        addControlFragment();
 
         mTitle = mDrawerTitle = getTitle();
         mScreenTitles = getResources().getStringArray(R.array.screen_array);
@@ -92,37 +89,10 @@ public class MainActivity extends ActionBarActivity {
         // Set the drawer toggle as the DrawerListener
         mDrawerLayout.setDrawerListener(mDrawerToggle);
 
-        // Initialize the first fragment when the application first loads.
         if (savedInstanceState == null) {
-//            selectItem(0);
+            selectItem(0);
         }
     }
-
-
-//    public void addControlFragment() {
-//        if(findViewById(R.id.content_row) != null) {
-//            controlFragment = ControlFragment.newInstance();
-//            controlFragment.onDetach();
-//            FragmentTransaction ft = fm.beginTransaction();
-//            ft.add(controlRow.getId(), controlFragment);
-//            ft.commit();
-//        }
-//    }
-//
-//    @Override
-//    public void onResume() {
-//        super.onResume();
-//        addControlFragment();
-//    }
-//
-//    @Override
-//    protected void onPause() {
-//        super.onPause();
-//        controlRow.getChildCount();
-//        FragmentTransaction ft = fm.beginTransaction();
-//        ft.remove(controlFragment);
-//        ft.commit();
-//    }
 
     // Add ActionBar Menu with dropdown of game speed
     public boolean onCreateOptionsMenu(Menu menu){
@@ -162,6 +132,7 @@ public class MainActivity extends ActionBarActivity {
 
     //Show content
     void selectItem(int id){
+        Intent intent = null;
         Fragment fragment;
         ((FrameLayout) findViewById(R.id.container)).removeAllViews();
         FragmentTransaction ft;
@@ -173,26 +144,19 @@ public class MainActivity extends ActionBarActivity {
                 ft.commit();
                 break;
             case 1:
-                Intent intent = new Intent(this, Animation.class);
+                intent = new Intent(this, Animation.class);
                 startActivity(intent);
                 break;
             case 2:
                 ft = fm.beginTransaction();
-                fragment = Options.newInstance("test", "test");
+                fragment = Options.newInstance();
                 ft.replace(R.id.container, fragment);
                 ft.commit();
                 break;
             case 3:
-
+                intent = new Intent(this, MultiActivity.class);
+                startActivity(intent);
                 break;
-//            default:
-//                this.id = id;
-//                FragmentManager fragmentManager = getFragmentManager();
-//                fragmentTransaction = fragmentManager.beginTransaction();
-//                fragmentContent = ua.org.horishniy.geekhub.geekhubandroidhome01.appInterface.Fragments.Content.setIndex(id);
-//                fragmentTransaction.replace(R.id.frame_content, fragmentContent);
-//                fragmentTransaction.commit();
-//                break;
         }
     }
 
@@ -206,7 +170,6 @@ public class MainActivity extends ActionBarActivity {
      * When using the ActionBarDrawerToggle, you must call it during
      * onPostCreate() and onConfigurationChanged()...
      */
-
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
