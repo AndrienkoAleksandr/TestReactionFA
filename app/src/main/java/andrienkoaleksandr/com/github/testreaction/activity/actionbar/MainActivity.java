@@ -133,19 +133,18 @@ public class MainActivity extends ActionBarActivity {
     //Show content
     void selectItem(int id){
         Intent intent = null;
-        Fragment fragment;
+        Fragment fragment = null;
         ((FrameLayout) findViewById(R.id.container)).removeAllViews();
-        FragmentTransaction ft;
+        FragmentTransaction ft = null;
         switch (id){
             case 0:
-                ft = fm.beginTransaction();
-                fragment = ContentFragment.newInstance();
-                ft.replace(R.id.container, fragment);
-                ft.commit();
+                putMainContent();
                 break;
             case 1:
                 intent = new Intent(this, Animation.class);
                 startActivity(intent);
+
+                putMainContent();
                 break;
             case 2:
                 ft = fm.beginTransaction();
@@ -156,8 +155,17 @@ public class MainActivity extends ActionBarActivity {
             case 3:
                 intent = new Intent(this, MultiActivity.class);
                 startActivity(intent);
+
+                putMainContent();
                 break;
         }
+    }
+
+    private void putMainContent() {
+        FragmentTransaction ft = fm.beginTransaction();
+        Fragment fragment = ContentFragment.newInstance();
+        ft.replace(R.id.container, fragment);
+        ft.commit();
     }
 
     @Override
