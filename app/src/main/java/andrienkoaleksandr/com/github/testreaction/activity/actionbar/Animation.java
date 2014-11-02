@@ -4,22 +4,21 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-
 import andrienkoaleksandr.com.github.testreaction.R;
 
-public class SecondActivity extends Activity {
+public class Animation extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.second);
+        setContentView(R.layout.activity_animation);
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.second, menu);
+        getMenuInflater().inflate(R.menu.animation, menu);
         return true;
     }
 

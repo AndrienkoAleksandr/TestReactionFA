@@ -1,6 +1,8 @@
 package andrienkoaleksandr.com.github.testreaction;
 
 import android.app.Activity;
+import android.os.Bundle;
+import android.util.Log;
 
 import java.util.List;
 import java.util.Random;
@@ -23,13 +25,13 @@ public class GameThread extends Activity {
 
     private String message;
 
-    private final int amountSwitch = 10;
-
     private int nextNumber = -1;
 
-    private final int amountColumn = MainActivity.getAmountElementsOfRow();
+    private int amountColumn = MainActivity.getAmountElementsOfRow();
 
-    private final int amountRow = MainActivity.getAmountRow();
+    private int amountRow = MainActivity.getAmountRow();
+
+    private int amountSwitch = MainActivity.getAmountFlash();
 
     private static float successTrying;
 
@@ -47,6 +49,8 @@ public class GameThread extends Activity {
     }
 
     public GameThread(ContentFragment controlFragment) {
+        Bundle bundle = new Bundle();
+        Log.v("flash and size", bundle.getInt("flash") + " " + bundle.getInt("size"));
         if (speed == 0) {
             speed = Constant.NORMAL;
         }

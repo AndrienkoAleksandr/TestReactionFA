@@ -36,8 +36,6 @@
             android:id="@+id/startButton"
             android:layout_gravity="center_horizontal|top"
             android:layout_column="0" />
-
-
     </TableRow>
 
     <TableRow>

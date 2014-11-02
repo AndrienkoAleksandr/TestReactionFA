@@ -6,27 +6,39 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+
+import java.util.regex.Pattern;
 
 import andrienkoaleksandr.com.github.testreaction.R;
+import andrienkoaleksandr.com.github.testreaction.activity.actionbar.MainActivity;
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link Settings.OnFragmentInteractionListener} interface
+ * {@link Options.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link Settings#newInstance} factory method to
+ * Use the {@link Options#newInstance} factory method to
  * create an instance of this fragment.
  *
  */
-public class Settings extends Fragment {
+public class Options extends Fragment implements View.OnClickListener {
+
+    private EditText amountFlashView;
+
+    private EditText sizeGameTableView;
+
+    private Button save;
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+//    private static final String ARG_PARAM1 = "param1";
+//    private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+//    // TODO: Rename and change types of parameters
+//    private int mParam1;
+//    private int mParam2;
 
     private OnFragmentInteractionListener mListener;
 
@@ -39,15 +51,17 @@ public class Settings extends Fragment {
      * @return A new instance of fragment Settings.
      */
     // TODO: Rename and change types and number of parameters
-    public static Settings newInstance(String param1, String param2) {
-        Settings fragment = new Settings();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
+    public static Options newInstance(String param1, String param2) {
+        Options fragment = new Options();
+//        Bundle args = new Bundle();
+
+//        args.putString(ARG_PARAM1, param1);
+//        args.putString(ARG_PARAM2, param2);
+//        fragment.setArguments(args);
         return fragment;
     }
-    public Settings() {
+
+    public Options() {
         // Required empty public constructor
     }
 
@@ -55,8 +69,8 @@ public class Settings extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+//            mParam1 = getArguments().getInt(ARG_PARAM1);
+//            mParam2 = getArguments().getInt(ARG_PARAM2);
         }
     }
 
@@ -64,7 +78,7 @@ public class Settings extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_settings, container, false);
+        return inflater.inflate(R.layout.options, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -74,7 +88,48 @@ public class Settings extends Fragment {
         }
     }
 
-//    @Override
+    @Override
+    public void onClick(View v) {
+        String flash = amountFlashView.getText().toString();
+        String size = sizeGameTableView.getText().toString();
+        int result;
+        Bundle args = new Bundle();
+        switch (v.getId()) {
+            case R.id.save:
+            if ((result = checkData(flash)) != -1) {
+                MainActivity.setAmountFlash(result);
+            }
+            if ((result = checkData(size)) != -1) {
+                MainActivity.setAmountElementsOfRow(result);
+                MainActivity.setAmountRow(result);
+            }
+            break;
+        }
+    }
+
+    private int checkData(String line) {
+        int result = -1;
+        //check that line consist of number
+        if(Pattern.matches("[1-9]+", line)) {
+            result = Integer.parseInt(line);
+            //check user entered not 0
+            if (result == 0) {
+                return -1;
+            }
+        }
+        return result;
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        amountFlashView = (EditText) getView().findViewById(R.id.flash);
+        sizeGameTableView = (EditText) getView().findViewById(R.id.size);
+        save = (Button) getView().findViewById(R.id.save);
+        save.setOnClickListener(this);
+    }
+
+    //    @Override
 //    public void onAttach(Activity activity) {
 //        super.onAttach(activity);
 //        try {

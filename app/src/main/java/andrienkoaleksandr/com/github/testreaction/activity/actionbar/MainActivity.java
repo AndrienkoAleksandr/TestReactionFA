@@ -15,23 +15,20 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.FrameLayout;
 import android.widget.ListView;
-import android.widget.TableRow;
-import android.widget.Toast;
 
 import andrienkoaleksandr.com.github.testreaction.Constant;
 import andrienkoaleksandr.com.github.testreaction.GameThread;
 import andrienkoaleksandr.com.github.testreaction.R;
 import andrienkoaleksandr.com.github.testreaction.fragment.ContentFragment;
-import andrienkoaleksandr.com.github.testreaction.fragment.Settings;
+import andrienkoaleksandr.com.github.testreaction.fragment.Options;
 
 /**
  * Created by Andrienko Alexander on 26.10.2014.
  *
  */
 public class MainActivity extends ActionBarActivity {
-
-    private static TableRow controlRow;
 
     private FragmentManager fm = getFragmentManager();
 
@@ -43,9 +40,10 @@ public class MainActivity extends ActionBarActivity {
     private CharSequence mDrawerTitle;
     private CharSequence mTitle;
 
-    private static int AmountRow = 4;
+    private static int amountRow = 4;
     private static int amountElementsOfRow = 4;
-    private ContentFragment contentFragment;
+    private static int amountFlash = 10;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -162,48 +160,40 @@ public class MainActivity extends ActionBarActivity {
         }
     }
 
-    public static int getAmountRow() {
-        return AmountRow;
-    }
-
-    public static int getAmountElementsOfRow() {
-        return amountElementsOfRow;
-    }
     //Show content
     void selectItem(int id){
-        FragmentTransaction ft = null;
+        Fragment fragment;
+        ((FrameLayout) findViewById(R.id.container)).removeAllViews();
+        FragmentTransaction ft;
         switch (id){
             case 0:
-                Intent intent = new Intent(this, andrienkoaleksandr.com.github.testreaction.activity.actionbar.SecondActivity.class);
-                startActivity(intent);
-                break;
-            case 1:
-                break;
-            case 2:
-                //delete all content
-                clearActivity();
                 ft = fm.beginTransaction();
-                Fragment fm = Settings.newInstance("test", "test");
-//                ft.replace(R.id.content_row, fm);
+                fragment = ContentFragment.newInstance();
+                ft.replace(R.id.container, fragment);
                 ft.commit();
                 break;
-//                Intent intent = new Intent(this, ua.org.horishniy.geekhub.geekhubandroidhome01.appInterface.Activities.AnimationActivity.class);
-//                startActivity(intent);
-            default:
+            case 1:
+                Intent intent = new Intent(this, Animation.class);
+                startActivity(intent);
+                break;
+            case 2:
+                ft = fm.beginTransaction();
+                fragment = Options.newInstance("test", "test");
+                ft.replace(R.id.container, fragment);
+                ft.commit();
+                break;
+            case 3:
+
+                break;
+//            default:
 //                this.id = id;
 //                FragmentManager fragmentManager = getFragmentManager();
 //                fragmentTransaction = fragmentManager.beginTransaction();
 //                fragmentContent = ua.org.horishniy.geekhub.geekhubandroidhome01.appInterface.Fragments.Content.setIndex(id);
 //                fragmentTransaction.replace(R.id.frame_content, fragmentContent);
 //                fragmentTransaction.commit();
-                break;
+//                break;
         }
-    }
-
-    private void clearActivity() {
-//        ((TableRow) findViewById(R.id.content_row)).removeAllViews();
-//        ((TableRow) findViewById(R.id.title_row)).removeAllViews();
-//        ((TableRow) findViewById(R.id.control_row)).removeAllViews();
     }
 
     @Override
@@ -229,6 +219,30 @@ public class MainActivity extends ActionBarActivity {
         super.onConfigurationChanged(newConfig);
         // Pass any configuration change to the drawer toggles
         mDrawerToggle.onConfigurationChanged(newConfig);
+    }
+
+    public static int getAmountRow() {
+        return amountRow;
+    }
+
+    public static int getAmountElementsOfRow() {
+        return amountElementsOfRow;
+    }
+
+    public static void setAmountRow(int amountRow) {
+        MainActivity.amountRow = amountRow;
+    }
+
+    public static void setAmountElementsOfRow(int amountElementsOfRow) {
+        MainActivity.amountElementsOfRow = amountElementsOfRow;
+    }
+
+    public static int getAmountFlash() {
+        return amountFlash;
+    }
+
+    public static void setAmountFlash(int amountFlash) {
+        MainActivity.amountFlash = amountFlash;
     }
 }
 

@@ -79,6 +79,13 @@ public class ContentFragment extends Fragment {
         });
     }
 
+    public static ContentFragment newInstance() {
+        ContentFragment fragment = new ContentFragment();
+        Bundle args = new Bundle();
+        fragment.setArguments(args);
+        return fragment;
+    }
+
     public static List<SmartButton> getSmartButtons() {
         return smartButtons;
     }
