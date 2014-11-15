@@ -23,10 +23,6 @@
             android:label="@string/title_activity_animation" >
         </activity>
         <activity
-            android:name=".activity.actionbar.MultiPane"
-            android:label="@string/title_activity_multy_pane" >
-        </activity>
-        <activity
             android:name=".MultiActivity"
             android:label="@string/multi_activity" >
         </activity>
