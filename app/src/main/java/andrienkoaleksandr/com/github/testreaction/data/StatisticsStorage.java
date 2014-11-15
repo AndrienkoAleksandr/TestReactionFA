@@ -1,4 +1,4 @@
-package andrienkoaleksandr.com.github.testreaction;
+package andrienkoaleksandr.com.github.testreaction.data;
 
 import android.content.SharedPreferences;
 

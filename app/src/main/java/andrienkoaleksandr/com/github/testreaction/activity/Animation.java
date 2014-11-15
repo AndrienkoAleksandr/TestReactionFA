@@ -1,4 +1,4 @@
-package andrienkoaleksandr.com.github.testreaction.activity.actionbar;
+package andrienkoaleksandr.com.github.testreaction.activity;
 
 import android.app.Activity;
 import android.os.Bundle;

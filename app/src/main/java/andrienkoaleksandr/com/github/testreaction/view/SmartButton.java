@@ -5,7 +5,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
-import andrienkoaleksandr.com.github.testreaction.GameThread;
+import andrienkoaleksandr.com.github.testreaction.thread.GameThread;
 import andrienkoaleksandr.com.github.testreaction.R;
 
 /**

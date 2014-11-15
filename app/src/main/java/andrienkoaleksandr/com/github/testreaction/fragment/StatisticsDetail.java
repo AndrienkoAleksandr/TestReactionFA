@@ -1,4 +1,4 @@
-package andrienkoaleksandr.com.github.testreaction;
+package andrienkoaleksandr.com.github.testreaction.fragment;
 
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
@@ -7,9 +7,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import andrienkoaleksandr.com.github.testreaction.R;
+import andrienkoaleksandr.com.github.testreaction.data.StatisticsStorage;
+
 public class StatisticsDetail extends Fragment {
-    final static String ARG_POSITION = "position";
-    int mCurrentPosition = -1;
+    public final static String ARG_POSITION = "position";
+    public int mCurrentPosition = -1;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, 

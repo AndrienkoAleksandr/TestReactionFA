@@ -1,8 +1,12 @@
-package andrienkoaleksandr.com.github.testreaction;
+package andrienkoaleksandr.com.github.testreaction.fragment.fragment_activity;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
+
+import andrienkoaleksandr.com.github.testreaction.R;
+import andrienkoaleksandr.com.github.testreaction.fragment.StatisticsDetail;
+import andrienkoaleksandr.com.github.testreaction.fragment.list_fragments.StatisticsItems;
 
 public class MultiActivity extends FragmentActivity
         implements StatisticsItems.OnHeadlineSelectedListener {

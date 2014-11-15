@@ -1,4 +1,4 @@
-package andrienkoaleksandr.com.github.testreaction.activity.actionbar;
+package andrienkoaleksandr.com.github.testreaction.activity;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
@@ -19,8 +19,8 @@ import android.widget.FrameLayout;
 import android.widget.ListView;
 
 import andrienkoaleksandr.com.github.testreaction.Constant;
-import andrienkoaleksandr.com.github.testreaction.GameThread;
-import andrienkoaleksandr.com.github.testreaction.MultiActivity;
+import andrienkoaleksandr.com.github.testreaction.thread.GameThread;
+import andrienkoaleksandr.com.github.testreaction.fragment.fragment_activity.MultiActivity;
 import andrienkoaleksandr.com.github.testreaction.R;
 import andrienkoaleksandr.com.github.testreaction.fragment.ContentFragment;
 import andrienkoaleksandr.com.github.testreaction.fragment.Options;
@@ -41,9 +41,9 @@ public class MainActivity extends ActionBarActivity {
     private CharSequence mDrawerTitle;
     private CharSequence mTitle;
 
-    private static int amountRow = 4;
-    private static int amountElementsOfRow = 4;
-    private static int amountFlash = 10;
+    private static int amountRow = Constant.AMOUNT_ROW;
+    private static int amountElementsOfRow = Constant.AMOUNT_ELEMENTS_OF_ROW;
+    private static int amountFlash = Constant.AMOUNT_FLASH;
 
 
     @Override

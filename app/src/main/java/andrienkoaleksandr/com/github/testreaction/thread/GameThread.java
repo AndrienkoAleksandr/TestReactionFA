@@ -1,4 +1,4 @@
-package andrienkoaleksandr.com.github.testreaction;
+package andrienkoaleksandr.com.github.testreaction.thread;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -9,7 +9,9 @@ import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import andrienkoaleksandr.com.github.testreaction.activity.actionbar.MainActivity;
+import andrienkoaleksandr.com.github.testreaction.Constant;
+import andrienkoaleksandr.com.github.testreaction.data.StatisticsStorage;
+import andrienkoaleksandr.com.github.testreaction.activity.MainActivity;
 import andrienkoaleksandr.com.github.testreaction.fragment.ContentFragment;
 import andrienkoaleksandr.com.github.testreaction.view.SmartButton;
 

@@ -1,4 +1,4 @@
-package andrienkoaleksandr.com.github.testreaction;
+package andrienkoaleksandr.com.github.testreaction.fragment.list_fragments;
 
 import android.app.Activity;
 import android.os.Build;
@@ -7,6 +7,9 @@ import android.support.v4.app.ListFragment;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+
+import andrienkoaleksandr.com.github.testreaction.R;
+import andrienkoaleksandr.com.github.testreaction.data.StatisticsStorage;
 
 public class StatisticsItems extends ListFragment {
     OnHeadlineSelectedListener mCallback;

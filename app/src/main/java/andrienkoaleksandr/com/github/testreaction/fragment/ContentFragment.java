@@ -13,9 +13,9 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-import andrienkoaleksandr.com.github.testreaction.GameThread;
+import andrienkoaleksandr.com.github.testreaction.thread.GameThread;
 import andrienkoaleksandr.com.github.testreaction.R;
-import andrienkoaleksandr.com.github.testreaction.activity.actionbar.MainActivity;
+import andrienkoaleksandr.com.github.testreaction.activity.MainActivity;
 import andrienkoaleksandr.com.github.testreaction.view.SmartButton;
 
 /**

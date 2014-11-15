@@ -12,7 +12,7 @@ import android.widget.EditText;
 import java.util.regex.Pattern;
 
 import andrienkoaleksandr.com.github.testreaction.R;
-import andrienkoaleksandr.com.github.testreaction.activity.actionbar.MainActivity;
+import andrienkoaleksandr.com.github.testreaction.activity.MainActivity;
 
 public class Options extends Fragment implements View.OnClickListener {
 

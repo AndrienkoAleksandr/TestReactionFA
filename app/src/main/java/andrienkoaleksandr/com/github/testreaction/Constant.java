@@ -9,4 +9,8 @@ public interface Constant {
     int NORMAL = 1000;
     int FAST = 600;
     int NIGHTMARE = 300;
+
+    int AMOUNT_ROW = 4;
+    int AMOUNT_ELEMENTS_OF_ROW = 4;
+    int AMOUNT_FLASH = 10;
 }
