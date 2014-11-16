@@ -62,7 +62,7 @@ public class ContentFragment extends Fragment {
                 smartButtons.add(new SmartButton(getActivity(), button));
             }
         }
-        gameThread = new GameThread(this);
+        gameThread = new GameThread(this, getActivity().getApplicationContext());
         startButton = (Button)getView().findViewById(R.id.startButton);
         resultLabel = (TextView)getView().findViewById(R.id.result_label);
 

@@ -1,15 +1,16 @@
 <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="andrienkoaleksandr.com.github.testreaction.fragment.ContentFragment">
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    tools:context="andrienkoaleksandr.com.github.testreaction.fragment.ContentFragment"
+    android:layout_gravity="center_horizontal|top">
 
     <TableRow
         android:layout_width="wrap_content"
-        android:layout_height="fill_parent"
+        android:layout_height="wrap_content"
         android:id="@+id/title_row">
         <TextView
-            android:layout_width="fill_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/title"
             android:id="@+id/title"
@@ -26,17 +27,17 @@
            android:id="@+id/content_table"/>
 
     <TableRow
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:id="@+id/control_row">
 
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
             android:text="@string/start_button"
             android:id="@+id/startButton"
             android:layout_gravity="center_horizontal|top"
-            android:layout_column="0" />
+            android:layout_column="0"/>
     </TableRow>
 
     <TableRow>

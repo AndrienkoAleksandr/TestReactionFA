@@ -1,14 +1,17 @@
 package andrienkoaleksandr.com.github.testreaction.activity;
 
+import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -75,12 +78,14 @@ public class MainActivity extends ActionBarActivity {
 
             /** Called when a drawer has settled in a completely closed state. */
             public void onDrawerClosed(View view) {
+                super.onDrawerClosed(view);
                 getSupportActionBar().setTitle(mTitle);
                 supportInvalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
             }
 
             /** Called when a drawer has settled in a completely open state. */
             public void onDrawerOpened(View drawerView) {
+                super.onDrawerOpened(drawerView);
                 getSupportActionBar().setTitle(mDrawerTitle);
                 supportInvalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
             }
@@ -92,7 +97,22 @@ public class MainActivity extends ActionBarActivity {
         if (savedInstanceState == null) {
             selectItem(0);
         }
+        setOptions();
     }
+
+    private void setOptions() {
+        SharedPreferences preferences = getPreferences(Activity.MODE_PRIVATE);
+        int result;
+        if ((result = preferences.getInt(Constant.OPTION_SIZE, -1)) != -1) {
+            amountElementsOfRow = result;
+            amountRow = result;
+        }
+        if((result = preferences.getInt(Constant.OPTION_AMOUNT_OF_FLASH, -1)) != -1) {
+            amountFlash = result;
+        }
+    }
+
+
 
     // Add ActionBar Menu with dropdown of game speed
     public boolean onCreateOptionsMenu(Menu menu){
@@ -103,6 +123,9 @@ public class MainActivity extends ActionBarActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        if (mDrawerToggle.onOptionsItemSelected(item)) {
+            return true;
+        }
         // set speed of game
         switch (item.getItemId()) {
             case R.id.item0:
@@ -117,9 +140,8 @@ public class MainActivity extends ActionBarActivity {
             case R.id.item3:
                 GameThread.setSpeed(Constant.NIGHTMARE);
                 return true;
-            default:
-                return super.onOptionsItemSelected(item);
         }
+        return super.onOptionsItemSelected(item);
     }
 
     /* The click listener for ListView in the navigation drawer */
@@ -127,6 +149,7 @@ public class MainActivity extends ActionBarActivity {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             selectItem(position);
+            mDrawerLayout.closeDrawer(Gravity.LEFT);
         }
     }
 
@@ -150,6 +173,7 @@ public class MainActivity extends ActionBarActivity {
                 ft = fm.beginTransaction();
                 fragment = Options.newInstance();
                 ft.replace(R.id.container, fragment);
+                ft.addToBackStack(null);
                 ft.commit();
                 break;
             case 3:
@@ -165,6 +189,7 @@ public class MainActivity extends ActionBarActivity {
         FragmentTransaction ft = fm.beginTransaction();
         Fragment fragment = ContentFragment.newInstance();
         ft.replace(R.id.container, fragment);
+        ft.addToBackStack(null);
         ft.commit();
     }
 

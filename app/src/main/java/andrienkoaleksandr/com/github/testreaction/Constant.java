@@ -10,7 +10,11 @@ public interface Constant {
     int FAST = 600;
     int NIGHTMARE = 300;
 
-    int AMOUNT_ROW = 4;
-    int AMOUNT_ELEMENTS_OF_ROW = 4;
+    int AMOUNT_ROW = 3;
+    int AMOUNT_ELEMENTS_OF_ROW = 3;
     int AMOUNT_FLASH = 10;
+
+    String PATH_TO_RESULT = "Statistics.txt";
+    String OPTION_AMOUNT_OF_FLASH = "amount flash";
+    String OPTION_SIZE = "result";
 }

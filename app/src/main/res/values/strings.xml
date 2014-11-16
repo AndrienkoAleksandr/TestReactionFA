@@ -33,5 +33,6 @@
     <string name="start_anim">Start animation</string>
     <string name="title_activity_multy_pane">MultyPane</string>
     <string name="multi_activity">MultiPane</string>
+    <string name="clear_statistics">Clear Statistics</string>
 
 </resources>

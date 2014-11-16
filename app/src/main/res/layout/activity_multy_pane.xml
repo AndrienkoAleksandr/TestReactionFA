@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentTop="true"
-        android:name="andrienkoaleksandr.com.github.testreaction.fragment.Statistics"
+        android:name="andrienkoaleksandr.com.github.testreaction.fragment.list_fragments.StatisticsItems"
         android:layout_toRightOf="@+id/alpha"
         android:layout_toEndOf="@+id/alpha" />
 

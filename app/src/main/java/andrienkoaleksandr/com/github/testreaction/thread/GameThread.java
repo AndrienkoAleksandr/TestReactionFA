@@ -1,6 +1,7 @@
 package andrienkoaleksandr.com.github.testreaction.thread;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -47,10 +48,10 @@ public class GameThread extends Activity {
 
     private static int speed;
 
-    public GameThread() {
-    }
+    private Context context;
 
-    public GameThread(ContentFragment controlFragment) {
+    public GameThread(ContentFragment controlFragment, Context context) {
+        this.context = context;
         Bundle bundle = new Bundle();
         Log.v("flash and size", bundle.getInt("flash") + " " + bundle.getInt("size"));
         if (speed == 0) {
@@ -69,10 +70,12 @@ public class GameThread extends Activity {
 
             @Override
             public boolean cancel() {
-                message = "Result " +
-                        successTrying / amountSwitch * 100 + " %";
+                float result = successTrying / amountSwitch * 100;
+                StatisticsStorage.init(context);
+                StatisticsStorage.addNewResult(result);
+                message = "Result " + result + " %";
                 controlFragment.getResultLabel().setText(message);
-                StatisticsStorage.addNewResult(message);
+
                 buttons.get(randomNumber).setGreyColor();
                 randomNumber = -1;
                 counter = 1;
@@ -132,5 +135,9 @@ public class GameThread extends Activity {
 
     public static void setSpeed(int speed) {
         GameThread.speed = speed;
+    }
+
+    public static int getSpeed() {
+        return speed;
     }
 }
